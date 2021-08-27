@@ -12,12 +12,23 @@ document.body.appendChild(app.view);
 
 const Graphics = PIXI.Graphics;
 
-const arbusto  = new Graphics()
+const arbusto  = new Graphics();
 arbusto.beginFill(0xAA33BB)
 .lineStyle(4, 0xFFEA00, 1)
 .drawRect(200,200,100,120)
 .endFill();
 app.stage.addChild(arbusto)
+
+app.loader.add('grama', 'img/ground.jpg');
+app.loader.load(setup);
+function setup(loader, resources) {
+  const background = new PIXI.Sprite(resources.grama.texture);
+  background.width = 500;
+  background.height = 500
+
+  app.stage.addChild(background);
+}
+
 
 class Keyboard {
     constructor () {
